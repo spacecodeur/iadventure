@@ -1,0 +1,10 @@
+[package]
+name = "adventure"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+httpserver = { path = "../../common/httpserver" }
+services_manager = { path = "../../common/services_manager" }
+serde = { version = "1.0.219", features = ["derive"] }
+uuid = { version = "1", features = ["v4"] }
