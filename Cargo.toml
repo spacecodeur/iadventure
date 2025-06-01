@@ -1,9 +1,10 @@
 [workspace]
 resolver = "3" 
 members = [
-    "crates/services/adventure",
     "crates/common/httpserver", 
-    "crates/common/services_manager"
+    "crates/common/services_manager",
+    "crates/services/adventure",
+    "crates/services/gamemaster",
 ]
 
 [workspace.dependencies]
