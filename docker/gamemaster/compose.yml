@@ -17,6 +17,17 @@ services:
       - ../../crates:/app/crates:ro
       - ../../crates/common:/app/crates/common:rw
       - ../../crates/gamemaster:/app/crates/gamemaster:rw
+      - ../../.cache:/home/appuser/.cache:rw
+    environment:
+      - CUDA_VISIBLE_DEVICES=all
+      - HF_HOME=/home/appuser/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     tty: true
     command: ["docker/gamemaster/post_build.sh"]
     networks:

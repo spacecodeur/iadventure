@@ -1,6 +1,9 @@
+mod download_status;
+
 use httpserver::{Json, Router, get, run_http_server};
 use serde::Serialize;
 use services_manager::{ServicesName, get_service_port};
+use download_status::download_status;
 
 #[derive(Serialize)]
 struct SimpleResponse {
@@ -18,6 +21,8 @@ async fn helloworld() -> Json<SimpleResponse> {
 
 fn main() {
     let port = get_service_port(ServicesName::GAMEMASTER);
-    let app = Router::new().route("/", get(helloworld));
+    let app = Router::new()
+        .route("/", get(helloworld))
+        .route("/download-status", get(download_status));
     run_http_server(app, &port);
 }

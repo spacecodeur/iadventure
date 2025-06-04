@@ -9,6 +9,11 @@ RUN apt update
 
 RUN apt install tree -y
 RUN apt install curl -y
+RUN apt install python3 python3-pip python3-venv -y
+
+# install ML dependencies for EVA Qwen2.5-72B model
+RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN pip3 install --no-cache-dir transformers safetensors accelerate
 
 # create container user with same rights than host user
 

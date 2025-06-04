@@ -7,3 +7,5 @@ edition = "2024"
 httpserver = { path = "../../common/httpserver" }
 services_manager = { path = "../../common/services_manager" }
 serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { version = "0.4", features = ["serde"] }
